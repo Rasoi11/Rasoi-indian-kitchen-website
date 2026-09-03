@@ -226,6 +226,18 @@ p { margin: 0 0 1em; color: var(--charcoal); }
   border-color: var(--ink);
 }
 .btn--gold:hover { background: var(--charcoal); border-color: var(--charcoal); }
+.btn--christmas {
+  background: var(--festive-red);
+  color: var(--gold-100);
+  border-color: var(--festive-red);
+  font-weight: 600;
+  box-shadow: 0 0 0 1px var(--gold-500) inset;
+}
+.btn--christmas:hover {
+  background: #7d2f2f;
+  border-color: #7d2f2f;
+  color: #fff;
+}
 
 .link-arrow {
   display: inline-flex;
@@ -333,28 +345,6 @@ p { margin: 0 0 1em; color: var(--charcoal); }
 }
 .nav a:hover::after, .nav a.active::after { left: 0; right: 0; }
 .nav a:hover, .nav a.active { color: var(--ink); }
-
-/* Christmas nav highlight */
-.nav a.nav-christmas {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--festive-red);
-}
-.nav a.nav-christmas:hover,
-.nav a.nav-christmas.active { color: var(--festive-red); }
-.nav a.nav-christmas::after { background: var(--festive-red); }
-.nav-christmas__badge {
-  font-family: var(--font-body);
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  background: var(--gold-500);
-  color: var(--ink);
-  padding: 2px 6px;
-  border-radius: 999px;
-  line-height: 1.4;
-}
 
 /* Dropdown menu */
 .has-dropdown { position: relative; }
