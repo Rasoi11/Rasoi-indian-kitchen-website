@@ -29,6 +29,8 @@
   --border:       rgba(138,106,47,0.22);
   --border-soft:  rgba(138,106,47,0.14);
 
+  --festive-red:  #9c3b3b;
+
   --bg:           var(--cream);
   --fg:           var(--ink);
 
@@ -331,6 +333,28 @@ p { margin: 0 0 1em; color: var(--charcoal); }
 }
 .nav a:hover::after, .nav a.active::after { left: 0; right: 0; }
 .nav a:hover, .nav a.active { color: var(--ink); }
+
+/* Christmas nav highlight */
+.nav a.nav-christmas {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--festive-red);
+}
+.nav a.nav-christmas:hover,
+.nav a.nav-christmas.active { color: var(--festive-red); }
+.nav a.nav-christmas::after { background: var(--festive-red); }
+.nav-christmas__badge {
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  background: var(--gold-500);
+  color: var(--ink);
+  padding: 2px 6px;
+  border-radius: 999px;
+  line-height: 1.4;
+}
 
 /* Dropdown menu */
 .has-dropdown { position: relative; }
@@ -1970,6 +1994,38 @@ p { margin: 0 0 1em; color: var(--charcoal); }
     margin-right: 8px;
     font-size: 0.7rem;
   }
+}
+
+/* -------- Christmas opening hours -------- */
+.christmas-hours {
+  max-width: 640px;
+  margin: 40px auto 0;
+  border-top: 1px solid var(--border);
+}
+.christmas-hours__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+.christmas-hours__row span:first-child { font-weight: 500; }
+.christmas-hours__row span:last-child { color: var(--charcoal); white-space: nowrap; }
+.christmas-hours__row--closed span:last-child {
+  color: var(--festive-red);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+}
+.christmas-hours__row--highlight { background: var(--ivory); }
+.christmas-hours__row--highlight span:last-child { color: var(--gold-700); font-weight: 600; }
+
+@media (max-width: 560px) {
+  .christmas-hours__row { font-size: 0.85rem; }
 }
 
 /* -------- Motion -------- */
