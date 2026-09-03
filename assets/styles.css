@@ -2018,6 +2018,22 @@ p { margin: 0 0 1em; color: var(--charcoal); }
   .christmas-hours__row { font-size: 0.85rem; }
 }
 
+.christmas-hours-section {
+  padding: 36px 0;
+  background: var(--ivory);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.christmas-hours--compact {
+  max-width: 560px;
+  margin-top: 18px;
+}
+.christmas-hours--compact .christmas-hours__row {
+  padding: 9px 4px;
+  font-size: 0.85rem;
+}
+.christmas-hours--compact .christmas-hours__row--closed span:last-child { font-size: 0.75rem; }
+
 /* -------- Motion -------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--easing), transform .7s var(--easing); }
 .reveal.is-visible { opacity: 1; transform: none; }
