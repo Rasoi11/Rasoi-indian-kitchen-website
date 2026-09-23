@@ -2045,3 +2045,89 @@ p { margin: 0 0 1em; color: var(--charcoal); }
   }
   html { scroll-behavior: auto; }
 }
+
+/* -------- Promo modal -------- */
+.promo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(23,20,15,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s var(--easing), visibility 0s linear .35s;
+}
+.promo-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .35s var(--easing);
+}
+.promo-modal__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 780px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 70px rgba(15,12,8,0.35);
+  transform: translateY(24px) scale(0.98);
+  transition: transform .35s var(--easing);
+}
+.promo-modal.is-open .promo-modal__card { transform: translateY(0) scale(1); }
+.promo-modal__media { position: relative; min-height: 220px; }
+.promo-modal__media img { width: 100%; height: 100%; object-fit: cover; }
+.promo-modal__body {
+  padding: clamp(28px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.promo-modal__body .eyebrow { margin: 0; }
+.promo-modal__body h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  line-height: 1.15;
+}
+.promo-modal__body h2 em { color: var(--festive-red); font-style: italic; }
+.promo-modal__body p { margin: 0; color: var(--charcoal); }
+.promo-modal__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+.promo-modal__dismiss {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.promo-modal__dismiss:hover { color: var(--ink); }
+.promo-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1;
+  z-index: 1;
+  transition: background .2s var(--easing);
+}
+.promo-modal__close:hover { background: #fff; }
+
+@media (max-width: 720px) {
+  .promo-modal__card { grid-template-columns: 1fr; }
+  .promo-modal__media { min-height: 160px; }
+}
