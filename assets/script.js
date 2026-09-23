@@ -188,7 +188,9 @@
       if (e.target === modal) closeModal();
     });
 
-    setTimeout(openModal, 4000);
+    // Fires immediately (not after a delay) — a delay lets anyone who clicks
+    // "Book" or "Order" right away leave the page before ever seeing this.
+    openModal();
   }
 
   // Content is always visible. We reserve reveal animations for the manual
