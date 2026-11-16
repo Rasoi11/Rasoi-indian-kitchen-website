@@ -1058,16 +1058,7 @@ p { margin: 0 0 1em; color: var(--charcoal); }
 .insta-tile:hover::after { background: rgba(26,23,18,0.35); }
 .insta-tile:hover .insta-tile__icon { opacity: 1; }
 
-/* Live Instagram feed via Behold */
-.instagram__feed {
-  margin-top: 36px;
-}
-.instagram__feed behold-widget {
-  display: block;
-  width: 100%;
-  --behold-row-gap: 6px;
-  --behold-column-gap: 6px;
-}
+.instagram__feed { margin-top: 36px; }
 
 /* -------- Book CTA -------- */
 .book {
