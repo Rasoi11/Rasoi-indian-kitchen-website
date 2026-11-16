@@ -6,6 +6,78 @@
   const yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 
+  // "Open today" line in the utility bar — worked out from UK time so it is
+  // right whatever timezone the visitor is in. Keep in sync with contact.html.
+  const openEl = document.querySelector('[data-open-today]');
+  if (openEl) {
+    // Weekly hours, 0 = Sunday. Times as 'HH:MM'. Empty = closed.
+    const WEEK = {
+      0: [['12:00', '15:00'], ['17:00', '22:30']],
+      1: [],
+      2: [['17:00', '21:00']],
+      3: [['17:00', '21:00']],
+      4: [['17:00', '21:00']],
+      5: [['17:00', '22:00']],
+      6: [['12:00', '15:00'], ['17:00', '22:30']]
+    };
+    // Date-specific overrides (YYYY-MM-DD). These win over the weekly hours.
+    const SPECIAL = {};
+    const xmas = [['12:00', '15:00'], ['17:00', '22:00']];
+    for (let d = 14; d <= 30; d++) SPECIAL['2026-12-' + d] = xmas;
+    SPECIAL['2026-12-24'] = [['12:00', '22:00']];
+    SPECIAL['2026-12-25'] = [];
+    SPECIAL['2026-12-31'] = [['12:00', '23:00']];
+    SPECIAL['2027-01-01'] = [['17:00', '22:00']];
+
+    const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const pad = n => String(n).padStart(2, '0');
+    const fmt = t => {
+      let [h, m] = t.split(':').map(Number);
+      const ap = h >= 12 ? 'pm' : 'am';
+      h = h % 12 || 12;
+      return m ? h + ':' + pad(m) + ap : h + ap;
+    };
+    const fmtRange = ([a, b]) => {
+      const fa = fmt(a), fb = fmt(b);
+      // "5–9pm" when both ends share am/pm, else "11am–3pm"
+      return fa.slice(-2) === fb.slice(-2) ? fa.slice(0, -2) + '–' + fb : fa + '–' + fb;
+    };
+    const fmtDay = slots => slots.map(fmtRange).join(' · ');
+
+    // Current date/time in the UK
+    const parts = {};
+    new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    }).formatToParts(new Date()).forEach(p => { parts[p.type] = p.value; });
+    const today = new Date(Date.UTC(+parts.year, +parts.month - 1, +parts.day));
+    const nowMins = +parts.hour * 60 + +parts.minute;
+    const toMins = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+
+    const hoursFor = date => {
+      const key = date.getUTCFullYear() + '-' + pad(date.getUTCMonth() + 1) + '-' + pad(date.getUTCDate());
+      return key in SPECIAL ? SPECIAL[key] : WEEK[date.getUTCDay()];
+    };
+
+    const todays = hoursFor(today);
+    const stillOpenLater = todays.some(([, close]) => toMins(close) > nowMins);
+    let text;
+    if (todays.length && stillOpenLater) {
+      text = 'Open today ' + fmtDay(todays);
+    } else {
+      // Closed for the rest of today — show the next day we open.
+      for (let i = 1; i <= 14; i++) {
+        const d = new Date(today.getTime() + i * 864e5);
+        const h = hoursFor(d);
+        if (!h.length) continue;
+        const label = i === 1 ? 'tomorrow' : DAYS[d.getUTCDay()];
+        text = (todays.length ? 'Closed now' : 'Closed today') + ' · Open ' + label + ' ' + fmtDay(h);
+        break;
+      }
+    }
+    if (text) openEl.textContent = text;
+  }
+
   // Mobile nav toggle
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
