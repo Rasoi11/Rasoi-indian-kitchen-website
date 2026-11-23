@@ -175,12 +175,18 @@
       btn.addEventListener('click', () => activate(btn.dataset.target));
     });
     // Hash-link support — e.g. /menus.html#cocktails opens that pane.
-    if (location.hash) {
+    const fromHash = () => {
       const id = location.hash.replace('#', '');
-      if (document.getElementById(id) && document.querySelector('.menu-pane#' + CSS.escape(id))) {
+      if (id && document.querySelector('.menu-pane#' + CSS.escape(id))) {
         activate(id);
+        return true;
       }
-    }
+      return false;
+    };
+    fromHash();
+    // In-page links (e.g. the hero's "New Year's Eve menu" button) change the
+    // hash without reloading, so switch panes on hashchange too.
+    window.addEventListener('hashchange', fromHash);
   }
 
   // Christmas promo popup — once per browser session, skipped on the
