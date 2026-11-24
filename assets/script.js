@@ -208,7 +208,7 @@
         '<div class="promo-modal__body">' +
           '<p class="eyebrow">Christmas 2026</p>' +
           '<h2 id="promo-modal-title">A very Rasoi <em>Christmas.</em></h2>' +
-          '<p>Join us this festive season for our Christmas set lunch, full opening times over the holidays, and a New Year’s Eve to remember.</p>' +
+          '<p>Join us this festive season for our Christmas and New Year’s Eve set menus, plus full opening times over the holidays.</p>' +
           '<div class="promo-modal__actions">' +
             '<a href="christmas.html" class="btn btn--christmas">See our Christmas menu</a>' +
             '<button type="button" class="promo-modal__dismiss">No thanks</button>' +
