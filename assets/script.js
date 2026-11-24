@@ -206,11 +206,12 @@
           '<img src="assets/images/christmas-team-hero.jpg" alt="" loading="lazy" />' +
         '</div>' +
         '<div class="promo-modal__body">' +
-          '<p class="eyebrow">Christmas 2026</p>' +
-          '<h2 id="promo-modal-title">A very Rasoi <em>Christmas.</em></h2>' +
+          '<p class="eyebrow">Christmas &amp; New Year 2026</p>' +
+          '<h2 id="promo-modal-title">Christmas &amp; <em>New Year’s Eve.</em></h2>' +
           '<p>Join us this festive season for our Christmas and New Year’s Eve set menus, plus full opening times over the holidays.</p>' +
           '<div class="promo-modal__actions">' +
-            '<a href="christmas.html" class="btn btn--christmas">See our Christmas menu</a>' +
+            '<a href="christmas.html" class="btn btn--christmas">Christmas menu</a>' +
+            '<a href="christmas.html#nye-dinner" class="btn btn--outline">New Year’s Eve menu</a>' +
             '<button type="button" class="promo-modal__dismiss">No thanks</button>' +
           '</div>' +
         '</div>' +
