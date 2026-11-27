@@ -100,7 +100,7 @@
     <div class="container">
       <ul class="menu-tabs__list" role="tablist">
         <li><button class="menu-tab is-active" role="tab" aria-selected="true" data-target="alacarte">Main Menu</button></li>
-        <li><button class="menu-tab" role="tab" aria-selected="false" data-target="lunch">Lunch</button></li>
+        <li><button class="menu-tab" role="tab" aria-selected="false" data-target="lunch">Festive Lunch</button></li>
         <li><button class="menu-tab" role="tab" aria-selected="false" data-target="vegan">Vegan</button></li>
         <li><button class="menu-tab" role="tab" aria-selected="false" data-target="cocktails">Cocktails</button></li>
         <li><button class="menu-tab" role="tab" aria-selected="false" data-target="wine">Wine</button></li>
@@ -210,8 +210,91 @@
         <p class="menu-pane__legend"><span class="diet">V</span> Vegetarian &nbsp; <span class="diet">VE</span> Vegan &nbsp; <span class="diet">GF</span> Gluten free. All dishes may contain traces of nuts. Please ask your server about allergens.</p>
       </article>
 
-      <!-- LUNCH -->
-      <article class="menu-pane" id="lunch" role="tabpanel" hidden>
+      <!-- FESTIVE LUNCH — shown until 31 Dec 2026, swapped out by script.js on 1 Jan 2027 -->
+      <article class="menu-pane" id="lunch" role="tabpanel" data-until="2027-01-01" data-tab-label="Festive Lunch" hidden>
+        <p class="menu-pane__intro"><strong>Merry Christmas Set Lunch.</strong> Two courses <span class="price">18</span> · Three courses <span class="price">22</span>. Season's greetings from our kitchen. See <a href="christmas.html">festive opening times</a>.</p>
+
+        <details class="menu-cat" open>
+          <summary><span class="menu-cat__name">For the Table</span><span class="menu-cat__chev" aria-hidden="true">+</span></summary>
+          <div class="menu-cat__body">
+            <p class="menu-cat__note">Extra dishes to share, priced individually.</p>
+            <div class="dish"><div class="dish__head"><h4>Poppadoms <span class="price">1.10</span></h4></div><p>Traditional crisp lentil poppadoms, each. <span class="diet">V VE GF</span></p></div>
+            <div class="dish"><div class="dish__head"><h4>Far Far <span class="price">3.50</span></h4></div><p>Colourful Indian-style crispy snacks. <span class="diet">V VE GF</span></p></div>
+            <div class="dish"><div class="dish__head"><h4>Chutney Selection <span class="price">4.00</span></h4></div><p>Mint yoghurt, spicy tomato, salsa, mango. <span class="diet">V GF</span></p></div>
+          </div>
+        </details>
+
+        <details class="menu-cat" open>
+          <summary><span class="menu-cat__name">Starters</span><span class="menu-cat__chev" aria-hidden="true">+</span></summary>
+          <div class="menu-cat__body">
+            <div class="dish"><div class="dish__head"><h4>Samosa Chaat <span class="diet">V</span></h4></div><p>Chickpeas, yoghurt, mint and tamarind.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Mixed Vegetable Pakora <span class="diet">V VE GF</span></h4></div><p>Gram-flour-coated vegetables, mint chutney.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Chilli Paneer <span class="diet">V GF</span></h4></div><p>Peppers, onions, chilli and garlic.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Chicken Tikka <span class="diet">GF</span></h4></div><p>Yoghurt-marinated chicken, cooked in the tandoor.</p></div>
+          </div>
+        </details>
+
+        <details class="menu-cat">
+          <summary><span class="menu-cat__name">Wraps &amp; Naan Sandwiches</span><span class="menu-cat__chev" aria-hidden="true">+</span></summary>
+          <div class="menu-cat__body">
+            <div class="dish"><div class="dish__head"><h4>Chicken or Paneer Tikka Wrap <span class="diet">V option</span></h4></div><p>Tandoori chicken or paneer, salad, mint chutney and fries.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Sheekh Kebab Naan Sandwich</h4></div><p>Spiced lamb kebab, salad and mint chutney in warm naan.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Butter Chicken Naan Sandwich</h4></div><p>Butter chicken, salad and pickled onions in warm naan.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Aloo Tikki Naan Sandwich <span class="diet">V</span></h4></div><p>Spiced potato tikki, salad, mint and tamarind in warm naan.</p></div>
+          </div>
+        </details>
+
+        <details class="menu-cat">
+          <summary><span class="menu-cat__name">Biryani &amp; Grill</span><span class="menu-cat__chev" aria-hidden="true">+</span></summary>
+          <div class="menu-cat__body">
+            <div class="dish"><div class="dish__head"><h4>Lucknow Chicken Biryani</h4></div><p>Layered with chicken and biryani spices.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Vegetable Biryani <span class="diet">V</span></h4></div><p>Layered with vegetables and biryani spices.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Hyderabadi Lamb <span class="diet">GF</span> <span class="diet">+£4</span></h4></div><p>Slow-cooked lamb, rich Hyderabadi-style sauce.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Chicken or Paneer Shashlik <span class="diet">V option</span> <span class="diet">GF</span> <span class="diet">+£4</span></h4></div><p>Peppers and onions, makhani sauce.</p></div>
+          </div>
+        </details>
+
+        <details class="menu-cat">
+          <summary><span class="menu-cat__name">Mains</span><span class="menu-cat__chev" aria-hidden="true">+</span></summary>
+          <div class="menu-cat__body">
+            <p class="menu-cat__note">Served with a choice of side (see below) — not available with biryani, wraps or naan sandwiches.</p>
+            <div class="dish"><div class="dish__head"><h4>Chicken Korma <span class="diet">GF</span></h4></div><p>Mild, creamy coconut and almond sauce.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Butter Chicken <span class="diet">GF</span></h4></div><p>Rich, creamy tomato and fenugreek sauce.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Punjabi Murgh Masala <span class="diet">GF</span></h4></div><p>Chicken tikka, medium-spiced masala sauce.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Punjabi Shahi Paneer <span class="diet">V GF</span></h4></div><p>Rich and creamy Punjabi-style sauce.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Vegan Jalfrezi <span class="diet">V VE GF</span></h4></div><p>Mixed vegetables and peppers, tomato sauce.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Lamb Rogan Josh <span class="diet">GF</span> <span class="diet">+£4</span></h4></div><p>Tomatoes, Kashmiri chilli and aromatic spices.</p></div>
+          </div>
+        </details>
+
+        <details class="menu-cat">
+          <summary><span class="menu-cat__name">Sides</span><span class="menu-cat__chev" aria-hidden="true">+</span></summary>
+          <div class="menu-cat__body menu-cat__body--cols">
+            <p class="menu-cat__note">Choose one with each main. Not available with biryani, wraps or naan sandwiches.</p>
+            <div class="dish dish--line"><h4>Tandoori Naan</h4></div>
+            <div class="dish dish--line"><h4>Garlic &amp; Coriander Naan</h4></div>
+            <div class="dish dish--line"><h4>Steamed Rice</h4></div>
+            <div class="dish dish--line"><h4>Pilau Rice</h4></div>
+            <div class="dish dish--line"><h4>Chips</h4></div>
+            <div class="dish dish--line"><h4>Masala Chips</h4></div>
+          </div>
+        </details>
+
+        <details class="menu-cat">
+          <summary><span class="menu-cat__name">Festive Sweets</span><span class="menu-cat__chev" aria-hidden="true">+</span></summary>
+          <div class="menu-cat__body">
+            <div class="dish"><div class="dish__head"><h4>Gulab Jamun Cheesecake <span class="diet">V</span></h4></div><p>Creamy cheesecake topped with gulab jamun.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Sticky Toffee Pudding <span class="diet">V GF</span></h4></div><p>Toffee sauce and vanilla ice cream.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Malai Kulfi <span class="diet">V GF</span></h4></div><p>Topped with pistachios.</p></div>
+            <div class="dish"><div class="dish__head"><h4>Mango Sorbet <span class="diet">V VE GF</span></h4></div><p>Refreshing sorbet made with sweet mango.</p></div>
+          </div>
+        </details>
+
+        <p class="menu-pane__legend"><span class="diet">V</span> Vegetarian &nbsp; <span class="diet">VE</span> Vegan &nbsp; <span class="diet">GF</span> Gluten free. Please tell a member of our team about any allergies or dietary requirements before ordering.</p>
+      </article>
+
+      <!-- REGULAR LUNCH — comes back on 1 Jan 2027 (script.js removes it before then) -->
+      <article class="menu-pane" id="lunch-regular" role="tabpanel" data-from="2027-01-01" data-tab-label="Lunch" hidden>
         <p class="menu-pane__intro"><strong>£12 Lunch · Sat &amp; Sun, 12–3pm.</strong> A main and a side for £12. Add a starter or dessert for £4.</p>
 
         <details class="menu-cat" open>
@@ -594,6 +677,6 @@
     <div class="container footer__sanskrit"><img src="assets/brand/Rasoi_GoldSanskrit.svg?v=2" alt="ਰਸੋਈ" /></div>
   </footer>
 
-  <script src="assets/script.js?v=21"></script>
+  <script src="assets/script.js?v=22"></script>
 </body>
 </html>

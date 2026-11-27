@@ -141,6 +141,30 @@
     if (e.key === 'Escape') dropdownItems.forEach(o => o.classList.remove('is-open'));
   });
 
+  // Menu page — date-scheduled panes. A pane with data-from / data-until
+  // (YYYY-MM-DD, UK date; until is exclusive) only shows in that window.
+  // The live pane takes the id "lunch" so the tab and #lunch links still work.
+  (() => {
+    const scheduled = document.querySelectorAll('.menu-pane[data-from], .menu-pane[data-until]');
+    if (!scheduled.length) return;
+    const p = {};
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' })
+      .formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+    const today = p.year + '-' + p.month + '-' + p.day;
+    scheduled.forEach(pane => {
+      const from = pane.dataset.from, until = pane.dataset.until;
+      const live = (!from || today >= from) && (!until || today < until);
+      if (!live) { pane.remove(); return; }
+      if (pane.id !== 'lunch') {
+        const old = document.getElementById('lunch');
+        if (old) old.remove();
+        pane.id = 'lunch';
+      }
+      const tab = document.querySelector('.menu-tab[data-target="lunch"]');
+      if (tab && pane.dataset.tabLabel) tab.textContent = pane.dataset.tabLabel;
+    });
+  })();
+
   // Menu page — tab switching
   const menuTabs = document.querySelectorAll('.menu-tab');
   const menuPanes = document.querySelectorAll('.menu-pane');
