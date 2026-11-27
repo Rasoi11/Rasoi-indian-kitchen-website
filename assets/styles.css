@@ -1756,6 +1756,7 @@ p { margin: 0 0 1em; color: var(--charcoal); }
 .menu-pane { display: none; }
 .menu-pane.is-active { display: block; }
 .menu-pane[hidden] { display: none; }
+.diet[hidden], .menu-pane__intro[hidden] { display: none; }
 
 .menu-pane__intro {
   max-width: 640px;
