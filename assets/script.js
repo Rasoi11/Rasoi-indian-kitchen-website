@@ -141,12 +141,13 @@
     if (e.key === 'Escape') dropdownItems.forEach(o => o.classList.remove('is-open'));
   });
 
-  // Menu page — date-scheduled panes. A pane with data-from / data-until
-  // (YYYY-MM-DD, UK date; until is exclusive) only shows in that window.
+  // Date-scheduled content (YYYY-MM-DD, UK date; data-until is exclusive).
+  // Panes with data-from / data-until only show in that window, as do smaller bits.
   // The live pane takes the id "lunch" so the tab and #lunch links still work.
   (() => {
     const scheduled = document.querySelectorAll('.menu-pane[data-from], .menu-pane[data-until]');
-    if (!scheduled.length) return;
+    const scheduledBits = document.querySelectorAll('[data-from]:not(.menu-pane), [data-until]:not(.menu-pane)');
+    if (!scheduled.length && !scheduledBits.length) return;
     const p = {};
     new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' })
       .formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
@@ -162,6 +163,13 @@
       }
       const tab = document.querySelector('.menu-tab[data-target="lunch"]');
       if (tab && pane.dataset.tabLabel) tab.textContent = pane.dataset.tabLabel;
+    });
+    // Smaller bits (e.g. set menu line and SET MENU tags): ship hidden or
+    // visible in the HTML for the current period, flip on the date.
+    scheduledBits.forEach(el => {
+      const from = el.dataset.from, until = el.dataset.until;
+      const live = (!from || today >= from) && (!until || today < until);
+      if (live) el.removeAttribute('hidden'); else el.remove();
     });
   })();
 
